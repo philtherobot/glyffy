@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glyph Application</title>
+    <style>
+        .glyph-button {
+            font-size: 18px;
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        #text-area {
+            width: 100%;
+            height: 150px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <textarea id="text-area" placeholder="Enter text here"></textarea>
+        <div>
+            <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button onclick="clearTextArea()">Clear</button>
+        </div>
+        <div>
+            <button class="glyph-button" onclick="addGlyph('é', event)">é</button>
+            <button class="glyph-button" onclick="addGlyph('è', event)">è</button>
+            <button class="glyph-button" onclick="addGlyph('ê', event)">ê</button>
+            <button class="glyph-button" onclick="addGlyph('ë', event)">ë</button>
+            <button class="glyph-button" onclick="addGlyph('à', event)">à</button>
+            <button class="glyph-button" onclick="addGlyph('â', event)">â</button>
+            <button class="glyph-button" onclick="addGlyph('ä', event)">ä</button>
+            <button class="glyph-button" onclick="addGlyph('î', event)">î</button>
+            <button class="glyph-button" onclick="addGlyph('ï', event)">ï</button>
+            <button class="glyph-button" onclick="addGlyph('ô', event)">ô</button>
+            <button class="glyph-button" onclick="addGlyph('û', event)">û</button>
+            <button class="glyph-button" onclick="addGlyph('ù', event)">ù</button>
+            <button class="glyph-button" onclick="addGlyph('ç', event)">ç</button>
+        </div>
+        <div>
+            <button class="glyph-button" onclick="addGlyph('«')">«</button>
+            <button class="glyph-button" onclick="addGlyph('»')">»</button>
+            <button class="glyph-button" onclick="addGlyph('°')">°</button>
+            <button class="glyph-button" onclick="addGlyph('→')">→</button>
+            <button class="glyph-button" onclick="addGlyph('←')">←</button>
+            <button class="glyph-button" onclick="addGlyph('↑')">↑</button>
+            <button class="glyph-button" onclick="addGlyph('↓')">↓</button>
+            <button class="glyph-button" onclick="addGlyph('↔')">↔</button>
+        </div>
+        <div>
+            <button class="glyph-button" onclick="addGlyph('∑')">∑</button>
+            <button class="glyph-button" onclick="addGlyph('∫')">∫</button>
+            <button class="glyph-button" onclick="addGlyph('√')">√</button>
+            <button class="glyph-button" onclick="addGlyph('≈')">≈</button>
+            <button class="glyph-button" onclick="addGlyph('×')">×</button>
+            <button class="glyph-button" onclick="addGlyph('÷')">÷</button>
+            <button class="glyph-button" onclick="addGlyph('²')">²</button>
+            <button class="glyph-button" onclick="addGlyph('³')">³</button>
+            <button class="glyph-button" onclick="addGlyph('±')">±</button>
+            <button class="glyph-button" onclick="addGlyph('≤')">≤</button>
+            <button class="glyph-button" onclick="addGlyph('≥')">≥</button>
+        </div>
+        <div>
+            <button class="glyph-button" onclick="addGlyph('α', event)">α</button>
+            <button class="glyph-button" onclick="addGlyph('β', event)">β</button>
+            <button class="glyph-button" onclick="addGlyph('γ', event)">γ</button>
+            <button class="glyph-button" onclick="addGlyph('δ', event)">δ</button>
+            <button class="glyph-button" onclick="addGlyph('Ω', event)">Ω</button>
+            <button class="glyph-button" onclick="addGlyph('π', event)">π</button>
+            <button class="glyph-button" onclick="addGlyph('μ', event)">μ</button>
+            <button class="glyph-button" onclick="addGlyph('Δ', event)">Δ</button>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            var textArea = document.getElementById("text-area");
+            textArea.select();
+            document.execCommand('copy');
+        }
+
+        function clearTextArea() {
+            document.getElementById("text-area").value = '';
+        }
+
+        function addGlyph(glyph, event) {
+            var textArea = document.getElementById("text-area");
+
+            var finalGlyph = glyph;
+            
+            if( event ) {
+                if( event.shiftKey ) {
+                    var up = glyph.toUpperCase();
+                    if( glyph == up ) {
+                        finalGlyph = glyph.toLowerCase();
+                    }
+                    else {
+                        finalGlyph = up;
+                    }
+                }
+            }
+
+            textArea.value += finalGlyph;
+        }
+
+    </script>
+</body>
+
+</html>
